@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
+  const location = useLocation();
 
   return (
     <nav className="bg-white shadow-md border-b border-emerald-100">
@@ -14,13 +15,17 @@ const Navbar = () => {
           <div className="flex items-center space-x-4">
             <Link
               to="/"
-              className="text-emerald-600 hover:text-emerald-700 transition-colors"
+              className={`text-emerald-600 hover:text-emerald-700 transition-colors ${
+                location.pathname === '/' ? 'font-semibold' : ''
+              }`}
             >
               Home
             </Link>
             <Link
               to="/explore"
-              className="text-emerald-600 hover:text-emerald-700 transition-colors"
+              className={`text-emerald-600 hover:text-emerald-700 transition-colors ${
+                location.pathname === '/explore' ? 'font-semibold' : ''
+              }`}
             >
               Explore
             </Link>
@@ -28,7 +33,9 @@ const Navbar = () => {
               <>
                 <Link
                   to="/favorites"
-                  className="text-emerald-600 hover:text-emerald-700 transition-colors"
+                  className={`text-emerald-600 hover:text-emerald-700 transition-colors ${
+                    location.pathname === '/favorites' ? 'font-semibold' : ''
+                  }`}
                 >
                   Favorites
                 </Link>
@@ -43,13 +50,17 @@ const Navbar = () => {
               <>
                 <Link
                   to="/login"
-                  className="text-emerald-600 hover:text-emerald-700 transition-colors"
+                  className={`text-emerald-600 hover:text-emerald-700 transition-colors ${
+                    location.pathname === '/login' ? 'font-semibold' : ''
+                  }`}
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="text-emerald-600 hover:text-emerald-700 transition-colors"
+                  className={`text-emerald-600 hover:text-emerald-700 transition-colors ${
+                    location.pathname === '/register' ? 'font-semibold' : ''
+                  }`}
                 >
                   Register
                 </Link>
